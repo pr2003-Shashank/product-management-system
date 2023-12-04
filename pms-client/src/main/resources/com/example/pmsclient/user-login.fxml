@@ -38,10 +38,20 @@
             </Text>
          </children>
       </AnchorPane>
-      <Button layoutX="760.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleClose" onMouseClicked="#handleClose" style="-fx-background-color: white;" text="X" textFill="#ce1111">
+      <Button layoutX="758.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleClose" onMouseClicked="#handleClose" style="-fx-background-color: white;" textFill="#ce1111">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/close_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <padding>
+            <Insets bottom="5.0" left="6.0" right="6.0" top="5.0" />
+         </padding>
       </Button>
       <ImageView fitHeight="194.0" fitWidth="187.0" layoutX="102.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../../../images/pms2.png" />
