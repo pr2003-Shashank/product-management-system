@@ -10,6 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -27,7 +28,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Text>
-            <Button layoutX="1020.0" layoutY="3.0" mnemonicParsing="false" style="-fx-background-color: white;">
+            <Button fx:id="close" layoutX="1020.0" layoutY="3.0" mnemonicParsing="false" style="-fx-background-color: white;">
                <graphic>
                   <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -39,7 +40,7 @@
                   <Insets bottom="3.0" left="4.5" right="4.5" top="4.0" />
                </padding>
             </Button>
-            <Button layoutX="993.0" layoutY="3.0" mnemonicParsing="false" style="-fx-background-color: white;">
+            <Button fx:id="minimize" layoutX="993.0" layoutY="3.0" mnemonicParsing="false" style="-fx-background-color: white;">
                <padding>
                   <Insets bottom="3.0" left="4.5" right="4.5" top="4.0" />
                </padding>
@@ -54,7 +55,7 @@
          </children></AnchorPane>
         <AnchorPane layoutX="2.0" layoutY="32.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="55.0" style="-fx-background-color: gray; -fx-background-radius: 6 0 0 6;">
             <children>
-                <Label fx:id="user_label" alignment="CENTER" layoutX="60.0" layoutY="112.0" prefHeight="26.0" prefWidth="167.0" textFill="WHITE">
+                <Label fx:id="user_lable" alignment="CENTER" layoutX="60.0" layoutY="112.0" prefHeight="26.0" prefWidth="167.0" textFill="WHITE">
                     <font>
                         <Font size="20.0" />
                     </font>
@@ -125,6 +126,58 @@
                     </TableView>
                </children>
             </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane1" prefHeight="661.0" prefWidth="1050.0" style="-fx-background-color: #000;" />
+      <AnchorPane layoutX="2.0" layoutY="32.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="55.0" style="-fx-background-color: gray; -fx-background-radius: 6 0 0 6;">
+         <children>
+            <Label fx:id="user_lable1" alignment="CENTER" layoutX="60.0" layoutY="112.0" prefHeight="26.0" prefWidth="167.0" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="menu" layoutX="3.0" layoutY="22.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="39.0" style="-fx-background-color: gray;">
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/hamburger_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane2" layoutX="57.0" layoutY="32.0" prefHeight="627.0" prefWidth="200.0" style="-fx-background-radius: 0 6 6 0; -fx-background-color: gray;">
+         <children>
+            <VBox layoutX="75.0" layoutY="20.0" prefHeight="577.0" prefWidth="250.0" spacing="10.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+               <children>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="BUTTON" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="BUTTON" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="BUTTON" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="MANAGE USERS" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="BUTTON" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
     </children>
