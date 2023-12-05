@@ -4,21 +4,28 @@ import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ManageUsersController implements Initializable {
+public class LayoutController implements Initializable {
     @FXML
     private Button close;
     @FXML
     private Button minimize;
-
+    @FXML
+    private AnchorPane contentArea;
     @FXML
     private AnchorPane pane1, pane2;
     @FXML
@@ -63,6 +70,14 @@ public class ManageUsersController implements Initializable {
                 closePane2();
             }
         });
+
+        try{
+            Parent content = FXMLLoader.load(getClass().getResource("user-management.fxml"));
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(content);
+        } catch (IOException e) {
+            Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
     private void openPane2() {
         pane1.setVisible(true);

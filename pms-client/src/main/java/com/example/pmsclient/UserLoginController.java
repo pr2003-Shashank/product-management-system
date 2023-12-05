@@ -64,7 +64,7 @@ public class UserLoginController implements Initializable {
                 incorrectPasswordLabel.setVisible(false);
                 forgotPasswordLabel.setVisible(false);
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("manage-users.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("layout.fxml"));
                     Parent root = loader.load();
 
                     // Get the controller of the new scene if needed
