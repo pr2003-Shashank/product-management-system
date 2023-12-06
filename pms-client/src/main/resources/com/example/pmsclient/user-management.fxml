@@ -34,7 +34,7 @@
                         <Font size="14.0" />
                     </font>
                 </TextField>
-                <Button fx:id="update" layoutX="728.0" layoutY="65.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="98.0" style="-fx-background-color: #656464; -fx-border-radius: 5;" text="UPDATE" textFill="WHITE">
+                <Button fx:id="add_btn" layoutX="728.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleAddButtonAction" prefHeight="49.0" prefWidth="98.0" style="-fx-background-color: #656464; -fx-border-radius: 5;" text="ADD" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -53,14 +53,14 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Text>
-                <TableView fx:id="usertableview" layoutX="36.0" layoutY="50.0" prefHeight="275.0" prefWidth="806.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="36.0">
+                <TableView fx:id="userTableView" layoutX="36.0" layoutY="50.0" prefHeight="275.0" prefWidth="806.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="36.0">
                     <columns>
-                        <TableColumn fx:id="idcolumn" prefWidth="53.33331298828125" style="-fx-text-background-color: #656464;" text="ID" />
-                        <TableColumn fx:id="usernamecolumn" prefWidth="222.00003051757812" style="-fx-text-background-color: #656464;" text=" USERNAME" />
-                        <TableColumn fx:id="rolecolumn" minWidth="3.0" prefWidth="128.00006103515625" style="-fx-text-background-color: #656464;" text="ROLE" />
-                        <TableColumn fx:id="datecolumn" prefWidth="112.6666259765625" style="-fx-text-background-color: #656464;" text="DATE CREATED" />
-                        <TableColumn fx:id="emailcolumn" prefWidth="208.0" style="-fx-text-background-color: #656464;" text="EMAIL" />
-                        <TableColumn fx:id="updatescolumn" prefWidth="78.6666259765625" style="-fx-text-background-color: #656464;" text="+" />
+                        <TableColumn fx:id="indexColumn" prefWidth="54.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="NO." />
+                        <TableColumn fx:id="usernameColumn" prefWidth="222.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text=" USERNAME" />
+                        <TableColumn fx:id="roleColumn" minWidth="3.0" prefWidth="128.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="ROLE" />
+                        <TableColumn fx:id="dateColumn" prefWidth="114.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="DATE CREATED" />
+                        <TableColumn fx:id="emailColumn" prefWidth="208.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="EMAIL" />
+                        <TableColumn fx:id="updatesColumn" minWidth="77.0" prefWidth="77.0" style="-fx-text-background-color: #656464;" text="+" />
                     </columns>
                 </TableView>
             </children>

@@ -15,6 +15,8 @@ import javafx.stage.StageStyle;
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketImpl;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class ClientApp extends Application {
@@ -84,7 +86,6 @@ public class ClientApp extends Application {
             out.writeObject(username);
             out.writeObject(password);
 
-
             // Receive the server's response.
             isAuthenticated = (boolean) in.readObject();
             System.out.println(isAuthenticated);
@@ -96,6 +97,56 @@ public class ClientApp extends Application {
         }
         return isAuthenticated;
     }
+
+    public boolean sendToServerForAccountCreation(String username, String password, String email, String role) {
+        boolean isUserAdded = false;
+        try {
+            out.writeObject("ADD USER");
+            // Send the new user details to server
+            out.writeObject(username);
+            out.writeObject(password);
+            out.writeObject(email);
+            out.writeObject(role);
+
+            // recieve server's response
+            isUserAdded = (boolean) in.readObject();
+            System.out.println(isUserAdded);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return isUserAdded;
+    }
+
+    public List<String> getRolesFromServer() {
+        List<String> roles = new ArrayList<>();
+        try {
+            out.writeObject("GET ROLES");
+            // recieve the list of roles from server
+            roles = (List<String>) in.readObject();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return roles;
+    }
+
+    public List<List<Object>> getExistingUsersFromServer() {
+        List<List<Object>> users = new ArrayList<>();
+        try {
+            out.writeObject("GET USER TABLE");
+            // receive the table from the server
+            users = (List<List<Object>>) in.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return users;
+    }
+
+
 
     @Override
     public void stop() {
