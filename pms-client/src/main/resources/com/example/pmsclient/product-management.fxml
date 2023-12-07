@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="631.0" prefWidth="993.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pmsclient.ProductManagementController">
+   <children>
+      <Button fx:id="searchProductGo" layoutX="365.0" layoutY="73.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="70.0" style="-fx-background-color: #ffffff; -fx-border-color: #d7d7d9;" text="GO" textFill="#656464">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Text fill="#656464" layoutX="365.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Management" textAlignment="CENTER" wrappingWidth="263.0">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Text>
+      <TextField fx:id="searchProductText" layoutX="62.0" layoutY="73.0" prefHeight="46.0" prefWidth="269.0" promptText="Search Products">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <AnchorPane layoutX="60.0" layoutY="133.0" prefHeight="148.0" prefWidth="873.0" style="-fx-background-color: #d7d7d9;">
+         <children>
+            <Text fill="#656464" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Products" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="pro_name" layoutX="27.0" layoutY="62.0" prefHeight="46.0" prefWidth="152.0" promptText="Product Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="pro_desc" layoutX="203.0" layoutY="62.0" prefHeight="46.0" prefWidth="222.0" promptText="Description">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="pro_price" layoutX="450.0" layoutY="62.0" prefHeight="46.0" prefWidth="93.0" promptText="Price">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <ComboBox fx:id="pro_supplier" layoutX="567.0" layoutY="62.0" prefHeight="46.0" prefWidth="164.0" promptText="Select Suppliers" style="-fx-background-color: white;" />
+            <Button fx:id="addProduct" layoutX="757.0" layoutY="62.0" mnemonicParsing="false" onAction="#handleProductAddButtonAction" prefHeight="46.0" prefWidth="86.0" style="-fx-background-color: #656464; -fx-border-radius: 5;" text="ADD" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="60.0" layoutY="300.0" prefHeight="302.0" prefWidth="873.0" style="-fx-background-color: #d7d7d9;">
+         <children>
+            <TableView fx:id="productTableView" layoutX="21.0" layoutY="38.0" prefHeight="241.0" prefWidth="825.0">
+              <columns>
+                <TableColumn fx:id="pidcolumn" prefWidth="101.0" style="-fx-text-background-color: #656464; -fx-font-size: 15;" text="Product ID" />
+                <TableColumn fx:id="pnamecolumn" prefWidth="157.0" style="-fx-text-background-color: #656464; -fx-font-size: 15;" text="Product Name" />
+                  <TableColumn fx:id="pdesccolumn" prefWidth="251.0" style="-fx-text-background-color: #656464; -fx-font-size: 15;" text="Desciption" />
+                  <TableColumn fx:id="pricecolumn" prefWidth="107.0" style="-fx-text-background-color: #656464; -fx-font-size: 15;" text="Price" />
+                  <TableColumn fx:id="suppliercolumn" prefWidth="139.0" style="-fx-text-background-color: #656464; -fx-font-size: 15;" text="Supplier" />
+                  <TableColumn fx:id="propscolumn" prefWidth="69.0" style="-fx-text-background-color: #656464; -fx-font-size: 15;" text="+" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
