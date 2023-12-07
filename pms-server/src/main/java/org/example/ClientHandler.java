@@ -207,7 +207,7 @@ class ClientHandler implements Runnable {
         List<List<Object>> products = new ArrayList<>();
 
         try {
-            String query = "SELECT product_id, product_name, description, price, supplier_name FROM user u JOIN supplier s ON u.supplier_id = s.supplier_id";
+            String query = "SELECT product_id, product_name, description, price, supplier_name FROM product p JOIN supplier s ON p.supplier_id = s.supplier_id";
             try (PreparedStatement statement = connection.prepareStatement(query);
                  ResultSet resultSet = statement.executeQuery()) {
 

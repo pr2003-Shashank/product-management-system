@@ -60,7 +60,7 @@
                         <TableColumn fx:id="roleColumn" minWidth="3.0" prefWidth="128.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="ROLE" />
                         <TableColumn fx:id="dateColumn" prefWidth="114.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="DATE CREATED" />
                         <TableColumn fx:id="emailColumn" prefWidth="208.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="EMAIL" />
-                        <TableColumn fx:id="actionsColumn" minWidth="77.0" prefWidth="77.0" style="-fx-text-background-color: #656464;" text="+"/>
+                        <TableColumn fx:id="actionsColumn" minWidth="77.0" prefWidth="77.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="+" />
                     </columns>
                 </TableView>
             </children>
