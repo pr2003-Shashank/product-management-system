@@ -16,6 +16,8 @@ import java.io.*;
 import java.net.Socket;
 import java.net.SocketImpl;
 import java.util.Objects;
+import java.util.List;
+import java.util.ArrayList;
 
 public class ClientApp extends Application {
 
@@ -96,6 +98,48 @@ public class ClientApp extends Application {
         }
         return isAuthenticated;
     }
+
+    public List<String> receiveSupplierNames() {
+        List<String> supplierNames = new ArrayList<>();
+
+        try {
+            // Assuming the server sends a List<String> of supplier names
+            out.writeObject("GET SUPPLIERS");
+            supplierNames = (List<String>) in.readObject();
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return supplierNames;
+    }
+
+
+    public boolean addProductsToServer(String pname, String description, int price, String suppliers) {
+        boolean isProductAdded = false;
+        try {
+            // Assuming out is the ObjectOutputStream and in is the ObjectInputStream
+            out.writeObject("ADD PRODUCT");
+
+            // Send product information to the server.
+            out.writeObject(pname);
+            out.writeObject(description);
+            out.writeInt(price);
+            out.writeObject(suppliers);
+
+            // Receive the server's response.
+            isProductAdded = (boolean) in.readObject();
+            System.out.println("Product added: " + isProductAdded);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return isProductAdded;
+    }
+
+
 
     @Override
     public void stop() {

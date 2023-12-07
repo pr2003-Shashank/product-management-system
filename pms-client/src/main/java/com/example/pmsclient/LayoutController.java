@@ -72,7 +72,7 @@ public class LayoutController implements Initializable {
         });
 
         try{
-            Parent content = FXMLLoader.load(getClass().getResource("user-management.fxml"));
+            Parent content = FXMLLoader.load(getClass().getResource("product-management.fxml"));
             contentArea.getChildren().removeAll();
             contentArea.getChildren().setAll(content);
         } catch (IOException e) {
