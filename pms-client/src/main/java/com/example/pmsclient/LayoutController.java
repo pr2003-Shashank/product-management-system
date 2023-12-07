@@ -72,11 +72,37 @@ public class LayoutController implements Initializable {
         });
 
         try{
-            Parent content = FXMLLoader.load(getClass().getResource("product-management.fxml"));
+            Parent content = FXMLLoader.load(getClass().getResource("user-management.fxml"));
             contentArea.getChildren().removeAll();
             contentArea.getChildren().setAll(content);
         } catch (IOException e) {
             Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+    @FXML
+    protected void handleManageUsersBtnAction() {
+        if (!contentArea.getChildren().toString().equals("user-management.fxml")) {
+            try{
+                Parent content = FXMLLoader.load(getClass().getResource("user-management.fxml"));
+                contentArea.getChildren().removeAll();
+                contentArea.getChildren().setAll(content);
+            } catch (IOException e) {
+                Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+    }
+
+    @FXML
+    protected void handleManageProductsBtnAction() {
+        if (!contentArea.getChildren().toString().equals("product-management.fxml")) {
+            try{
+                Parent content = FXMLLoader.load(getClass().getResource("product-management.fxml"));
+                contentArea.getChildren().removeAll();
+                contentArea.getChildren().setAll(content);
+            } catch (IOException e) {
+                Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, e);
+            }
         }
     }
     private void openPane2() {

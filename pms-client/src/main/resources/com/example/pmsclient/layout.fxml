@@ -97,7 +97,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="BUTTON" textFill="WHITE">
+                  <Button fx:id="manageProductsBtn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleManageProductsBtnAction" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="MANAGE PRODUCTS" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -107,7 +107,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="MANAGE USERS" textFill="WHITE">
+                  <Button fx:id="manageUsersBtn" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#handleManageUsersBtnAction" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: transparent;" text="MANAGE USERS" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

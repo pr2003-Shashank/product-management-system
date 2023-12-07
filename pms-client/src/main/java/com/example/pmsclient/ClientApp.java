@@ -147,6 +147,18 @@ public class ClientApp extends Application {
         }
         return users;
     }
+
+    public List<List<Object>> getProductsFromServer() {
+        List<List<Object>> products = new ArrayList<>();
+        try {
+            out.writeObject("GET PRODUCT TABLE");
+            // receive the table from the server
+            products = (List<List<Object>>) in.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return products;
+    }
     public List<String> receiveSupplierNames() {
         List<String> supplierNames = new ArrayList<>();
 

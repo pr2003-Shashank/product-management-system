@@ -1,5 +1,9 @@
 package com.example.pmsclient;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -16,33 +20,33 @@ import javafx.scene.control.Alert.AlertType;
 public class ProductManagementController implements Initializable {
 
     @FXML
-    private TableColumn<?, ?> pdesccolumn;
+    private TableColumn<List<Object>, Object> descriptionColumn;
     @FXML
-    private TableColumn<?, ?> pidcolumn;
+    private TableColumn<List<Object>, Object> pIdColumn;
     @FXML
-    private TableColumn<?, ?> pnamecolumn;
+    private TableColumn<List<Object>, Object> pNameColumn;
     @FXML
-    private TableColumn<?, ?> pricecolumn;
+    private TableColumn<List<Object>, Object> priceColumn;
     @FXML
-    private TableView<?> productTableView;
+    private TableView<List<Object>> productsTableView;
     @FXML
-    private TableColumn<?, ?> propscolumn;
+    private TableColumn<List<Object>, Object> actionsColumn;
     @FXML
-    private TableColumn<?, ?> suppliercolumn;
+    private TableColumn<List<Object>, Object> supplierColumn;
     @FXML
-    private TextField pro_desc;
+    private TextField add_productDescription;
     @FXML
-    private TextField pro_name;
+    private TextField add_productName;
     @FXML
-    private TextField pro_price;
+    private TextField add_price;
     @FXML
-    private ComboBox<String> pro_supplier;
+    private ComboBox<String> add_supplier;
     @FXML
-    private Button searchProductGo;
+    private Button searchProductBtn;
     @FXML
     private TextField searchProductText;
     @FXML
-    private Button addProduct;
+    private Button addProductBtn;
 
     private ClientApp clientApp;
 
@@ -53,13 +57,13 @@ public class ProductManagementController implements Initializable {
 
     @FXML
     protected void handleProductAddButtonAction(){
-        String pname=pro_name.getText();
-        String description=pro_desc.getText();
-        String price1= pro_price.getText();
-        String supplier=pro_supplier.getSelectionModel().getSelectedItem();
+        String pname=add_productName.getText();
+        String description=add_productDescription.getText();
+        String price1= add_price.getText();
+        String supplier=add_supplier.getSelectionModel().getSelectedItem();
 
         // Check if any of the fields are empty
-        if (!pname.isEmpty() && !description.isEmpty() && !price1.isEmpty() && !supplier.isEmpty()) {
+        if (!pname.isEmpty() && !description.isEmpty() && !price1.isEmpty() && supplier != null && !supplier.isEmpty()) {
             try {
                 // Convert the price text to an integer
                 int price = Integer.parseInt(price1);
@@ -78,11 +82,13 @@ public class ProductManagementController implements Initializable {
                 showInfoWindow(isProductAdded, "Product added successfully", "Failed to add the product");
 
                 if (isProductAdded) {
+
+                    reloadProductsTableView();
                     // Clear the fields
-                    pro_name.clear();
-                    pro_desc.clear();
-                    pro_price.clear();
-                    pro_supplier.getSelectionModel().clearSelection();  // Clear the selection in the ComboBox
+                    add_productName.clear();
+                    add_productDescription.clear();
+                    add_price.clear();
+                    add_supplier.getSelectionModel().clearSelection();  // Clear the selection in the ComboBox
                 }
 
 
@@ -115,29 +121,37 @@ public class ProductManagementController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        // get the suppliers from suppliers table and populate the combobox
         List<String> supplierNames = clientApp.receiveSupplierNames();
-//        System.out.println("Received Supplier Names:");
-//        for (String sname : supplierNames) {
-//            System.out.println(sname);
-//        }
-        pro_supplier.getItems().addAll(supplierNames);
+        add_supplier.getItems().addAll(supplierNames);
 
-        // Add a listener to handle ComboBox selection changes
-        pro_supplier.setOnAction(event -> {
-            String selectedSupplier = pro_supplier.getSelectionModel().getSelectedItem();
-            System.out.println("Selected Supplier: " + selectedSupplier);
-            // Add code to handle the selected supplier as needed
-
-            // Set the selected supplier as the value of the ComboBox
-            pro_supplier.setValue(selectedSupplier);
-        });
-
-        // Example: You might want to set a default value for the ComboBox
-        if (!supplierNames.isEmpty()) {
-            pro_supplier.getSelectionModel().select(0); // Select the first item by default
-        }
-
+        populateProductsTableView();
     }
 
+    private void populateProductsTableView() {
+
+        pIdColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().get(0)));
+        pNameColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().get(1)));
+        descriptionColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().get(2)));
+        priceColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().get(3)));
+        supplierColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().get(4)));
+
+//        actionsColumn.setCellFactory(createCellFactory());
+
+        // Get your data (List<List<Object>>) and convert it to ObservableList<List<Object>>
+        List<List<Object>> products = clientApp.getProductsFromServer();
+        ObservableList<List<Object>> productsData = FXCollections.observableArrayList(products);
+
+        // Set the data to the TableView
+        productsTableView.getItems().addAll(productsData);
+    }
+
+    // You can call this method from elsewhere in your application
+     public void reloadProductsTableView() {
+        List<List<Object>> updatedProducts = clientApp.getProductsFromServer();
+        ObservableList<List<Object>> updatedProductsData = FXCollections.observableArrayList(updatedProducts);
+        productsTableView.setItems(updatedProductsData);
+    }
 }
 
