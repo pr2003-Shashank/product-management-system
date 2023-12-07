@@ -9,6 +9,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane prefHeight="631.0" prefWidth="993.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pmsclient.UserManagementController">
     <children>
         <Text fill="#656464" layoutX="371.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Management" textAlignment="CENTER" wrappingWidth="248.7890625">
@@ -60,7 +64,8 @@
                         <TableColumn fx:id="roleColumn" minWidth="3.0" prefWidth="128.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="ROLE" />
                         <TableColumn fx:id="dateColumn" prefWidth="114.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="DATE CREATED" />
                         <TableColumn fx:id="emailColumn" prefWidth="208.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="EMAIL" />
-                        <TableColumn fx:id="updatesColumn" minWidth="77.0" prefWidth="77.0" style="-fx-text-background-color: #656464;" text="+" />
+                        <TableColumn fx:id="updatesColumn" minWidth="77.0" prefWidth="77.0" style="-fx-text-background-color: #656464;" text="+" >
+                        </TableColumn>
                     </columns>
                 </TableView>
             </children>

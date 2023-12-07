@@ -81,6 +81,9 @@ public class UserManagementController implements Initializable {
         dateColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().get(2)));
         emailColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().get(3)));
 
+
+
+
         // Get your data (List<List<Object>>) and convert it to ObservableList<List<Object>>
         List<List<Object>> users = clientApp.getExistingUsersFromServer();
         ObservableList<List<Object>> usersData = FXCollections.observableArrayList(users);
@@ -96,5 +99,13 @@ public class UserManagementController implements Initializable {
         List<List<Object>> updatedUsers = clientApp.getExistingUsersFromServer();
         ObservableList<List<Object>> updatedUsersData = FXCollections.observableArrayList(updatedUsers);
         userTableView.setItems(updatedUsersData);
+    }
+
+    protected void handleEditButtonAction() {
+
+    }
+
+    protected void handleDeleteButtonAction() {
+
     }
 }
