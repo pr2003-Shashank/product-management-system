@@ -6,16 +6,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TableView;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
+
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.List;
-import javafx.scene.control.Alert;
+
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.util.Callback;
 
 public class ProductManagementController implements Initializable {
 
@@ -30,7 +33,7 @@ public class ProductManagementController implements Initializable {
     @FXML
     private TableView<List<Object>> productsTableView;
     @FXML
-    private TableColumn<List<Object>, Object> actionsColumn;
+    private TableColumn<List<Object>, Void> actionsColumn;
     @FXML
     private TableColumn<List<Object>, Object> supplierColumn;
     @FXML
@@ -137,7 +140,7 @@ public class ProductManagementController implements Initializable {
         priceColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().get(3)));
         supplierColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().get(4)));
 
-//        actionsColumn.setCellFactory(createCellFactory());
+        actionsColumn.setCellFactory(createCellFactory());
 
         // Get your data (List<List<Object>>) and convert it to ObservableList<List<Object>>
         List<List<Object>> products = clientApp.getProductsFromServer();
@@ -145,6 +148,67 @@ public class ProductManagementController implements Initializable {
 
         // Set the data to the TableView
         productsTableView.getItems().addAll(productsData);
+    }
+
+    private Callback<TableColumn<List<Object>, Void>, TableCell<List<Object>, Void>> createCellFactory() {
+        return new Callback<TableColumn<List<Object>, Void>, TableCell<List<Object>, Void>>() {
+            @Override
+            public TableCell<List<Object>, Void> call(TableColumn<List<Object>, Void> param) {
+                return new TableCell<List<Object>, Void>() {
+                    private final HBox hbox = new HBox();
+                    //                    private final Button editButton = new Button();
+//                    private final Button deleteButton = new Button();
+                    private ImageView editImageView = new ImageView();
+                    private ImageView deleteImageView = new ImageView();
+
+                    {
+                        // Set the edit icon
+                        Image editIcon = new Image(Objects.requireNonNull(getClass().getResource("/images/edit_icon.png")).toString());
+                        editImageView = new ImageView(editIcon);
+                        editImageView.setFitWidth(21);
+                        editImageView.setFitHeight(21);
+//                        editButton.setGraphic(editImageView);
+//                        editButton.setText("E");
+
+                        // Set the delete icon
+                        Image deleteIcon = new Image(Objects.requireNonNull(getClass().getResource("/images/delete_icon.png")).toString());
+                        deleteImageView = new ImageView(deleteIcon);
+                        deleteImageView.setFitWidth(21);
+                        deleteImageView.setFitHeight(21);
+//                        deleteButton.setGraphic(deleteImageView);
+//                        deleteButton.setText("D");
+
+                        // Handle edit button action
+                        editImageView.setOnMouseClicked(event -> {
+                            // Handle edit action here
+                        });
+
+                        // Handle delete button action
+                        deleteImageView.setOnMouseClicked(event -> {
+                            // Handle delete action here
+
+                        });
+
+                        // Add buttons to HBox
+                        hbox.getChildren().addAll(editImageView, deleteImageView);
+                        hbox.setAlignment(Pos.CENTER);
+                        hbox.setSpacing(7);
+                    }
+
+
+
+                    @Override
+                    protected void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(hbox);
+                        }
+                    }
+                };
+            }
+        };
     }
 
     // You can call this method from elsewhere in your application

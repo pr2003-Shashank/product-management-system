@@ -50,12 +50,12 @@
          <children>
             <TableView fx:id="productsTableView" layoutX="24.0" layoutY="89.0" prefHeight="274.0" prefWidth="825.0">
               <columns>
-                <TableColumn fx:id="pIdColumn" prefWidth="101.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="PRODUCT ID" />
-                <TableColumn fx:id="pNameColumn" prefWidth="157.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="PRODUCT NAME" />
-                  <TableColumn fx:id="descriptionColumn" prefWidth="251.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="DESCRIPTION" />
-                  <TableColumn fx:id="priceColumn" prefWidth="107.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="PRICE" />
-                  <TableColumn fx:id="supplierColumn" prefWidth="139.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="SUPPLIER" />
-                  <TableColumn fx:id="actionsColumn" prefWidth="69.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="+" />
+                <TableColumn fx:id="pIdColumn" minWidth="90.0" prefWidth="90.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="PRODUCT ID" />
+                <TableColumn fx:id="pNameColumn" minWidth="160.0" prefWidth="160.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="PRODUCT NAME" />
+                  <TableColumn fx:id="descriptionColumn" minWidth="50.0" prefWidth="255.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="DESCRIPTION" />
+                  <TableColumn fx:id="priceColumn" minWidth="80.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="PRICE" />
+                  <TableColumn fx:id="supplierColumn" minWidth="159.0" prefWidth="159.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="SUPPLIER" />
+                  <TableColumn fx:id="actionsColumn" minWidth="77.0" prefWidth="77.0" style="-fx-text-background-color: #656464; -fx-alignment: CENTER;" text="+" />
               </columns>
             </TableView>
             <TextField fx:id="searchProductText" layoutX="32.0" layoutY="23.0" prefHeight="37.0" prefWidth="269.0" promptText="Search Products" style="-fx-background-color: white; -fx-border-color: #656464;">
